@@ -1,7 +1,7 @@
-# orbit-db-feed
+# @orbitdb/feed-db
 Feed database type for orbit-db.
 
-[![orbit-db-feed tests](https://github.com/orbitdb/feed/actions/workflows/run-test.yml/badge.svg?branch=main)](https://github.com/orbitdb/feed/actions/workflows/run-test.yml)
+[![feed-db tests](https://github.com/orbitdb/feed/actions/workflows/run-test.yml/badge.svg?branch=main)](https://github.com/orbitdb/feed/actions/workflows/run-test.yml)
 [![codecov](https://codecov.io/gh/orbitdb/feed/graph/badge.svg?token=7OZK4BJDej)](https://codecov.io/gh/orbitdb/feed)
 
 ## Installation
@@ -13,6 +13,11 @@ $ pnpm add @constl/orbit-db-feed
 
 ## Examples
 ```ts
+import { createOrbit } from "@orbitdb/core";
+import { registerFeed } from "@orbitdb/feed-db";
+
+// Register database type. IMPORTANT - must call before creating orbit instance !
+registerFeed();
 const db = await orbit.open({ type: "feed" });
 
 await db.add({ a: 1, b: "c" });

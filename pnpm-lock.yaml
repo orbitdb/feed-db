@@ -88,6 +88,9 @@ devDependencies:
   typescript-transform-paths:
     specifier: ^3.4.6
     version: 3.4.6(typescript@5.3.3)
+  wherearewe:
+    specifier: ^2.0.1
+    version: 2.0.1
 
 packages:
 

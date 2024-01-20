@@ -1,11 +1,13 @@
 import { type Helia } from "helia";
-import { rimraf } from "rimraf";
 
-import Feed, { FeedDatabaseType } from "@/feed.js";
-import { createTestHelia } from "./config.js";
 import { Identities, Identity, KeyStore, KeyStoreType } from "@orbitdb/core";
-import { expect } from "aegir/chai";
+import Feed, { FeedDatabaseType } from "@/feed.js";
 import { DBElements } from "@/types.js";
+import { createTestHelia } from "./config.js";
+import { isBrowser } from "wherearewe";
+import { expect } from "aegir/chai";
+
+const rimrafImport = import("rimraf");
 
 const keysPath = "./testkeys";
 
@@ -19,7 +21,7 @@ describe("Feed Database", () => {
   const databaseId = "feed-AAA";
 
   before(async () => {
-    ipfs = await createTestHelia({ directory: "./ipfs1" });
+    ipfs = await createTestHelia();
 
     keystore = await KeyStore({ path: keysPath });
     identities = await Identities({ keystore });
@@ -35,9 +37,12 @@ describe("Feed Database", () => {
       await keystore.close();
     }
 
-    await rimraf(keysPath);
-    await rimraf("./orbitdb");
-    await rimraf("./ipfs1");
+    if (!isBrowser) {
+      const { rimraf } = await rimrafImport;
+      await rimraf(keysPath);
+      await rimraf("./orbitdb");
+      await rimraf("./ipfsOKV");
+    }
   });
 
   describe("Creating a Feed database", () => {

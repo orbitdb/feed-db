@@ -1,5 +1,5 @@
 {
-  "name": "@orbitdb/feed",
+  "name": "@orbitdb/feed-db",
   "version": "1.0.0",
   "description": "Feed database type for orbit-db.",
   "author": "Julien Jean Malard-Adam",
@@ -53,7 +53,8 @@
     "rimraf": "^5.0.5",
     "ts-patch": "^3.1.2",
     "typescript": "^5.3.3",
-    "typescript-transform-paths": "^3.4.6"
+    "typescript-transform-paths": "^3.4.6",
+    "wherearewe": "^2.0.1"
   },
   "jest": {
     "transform": {

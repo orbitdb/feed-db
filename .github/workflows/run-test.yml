@@ -1,4 +1,4 @@
-name: orbit-db-feed tests
+name: feed-db tests
 on:
   push:
     branches:
