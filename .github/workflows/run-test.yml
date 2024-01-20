@@ -14,7 +14,7 @@ jobs:
       - name: Préparation de Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 21
+          node-version: 'lts/*'
 
       - name: Installer pnpm
         uses: pnpm/action-setup@v2.4.0
