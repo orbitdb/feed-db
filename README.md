@@ -1,8 +1,8 @@
 # @orbitdb/feed-db
 Feed database type for orbit-db.
 
-[![feed-db tests](https://github.com/orbitdb/feed/actions/workflows/run-test.yml/badge.svg?branch=main)](https://github.com/orbitdb/feed/actions/workflows/run-test.yml)
-[![codecov](https://codecov.io/gh/orbitdb/feed/graph/badge.svg?token=7OZK4BJDej)](https://codecov.io/gh/orbitdb/feed)
+[![feed-db tests](https://github.com/orbitdb/feed-db/actions/workflows/run-test.yml/badge.svg?branch=main)](https://github.com/orbitdb/feed-db/actions/workflows/run-test.yml)
+[![codecov](https://codecov.io/gh/orbitdb/feed-db/graph/badge.svg?token=7OZK4BJDej)](https://codecov.io/gh/orbitdb/feed-db)
 
 ## Installation
 ```
