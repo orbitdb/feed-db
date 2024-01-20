@@ -7,8 +7,8 @@ on:
     branches:
       - main
 jobs:
-  test-node:
-    name: Node.js test
+  test-feed:
+    name: Test
     runs-on: ubuntu-latest
     steps:
       - name: Préparation de Node.js
@@ -28,7 +28,7 @@ jobs:
         run: pnpm install --lockfile=false
 
       - name: Vérifier les tests
-        run: pnpm test:node
+        run: pnpm test
 
       - name: Envoyer couverture à Codecov
         uses: codecov/codecov-action@v3
