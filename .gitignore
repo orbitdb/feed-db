@@ -1,0 +1,17 @@
+*.log
+.DS_Store
+node_modules
+/dist
+/.coverage
+/node_modules
+/.nyc_output
+/.vscode
+/_stockageTemp
+
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

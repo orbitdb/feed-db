@@ -1,0 +1,77 @@
+{
+  "name": "@orbitdb/feed",
+  "version": "1.0.0",
+  "description": "Feed database type for orbit-db.",
+  "author": "Julien Jean Malard-Adam",
+  "keywords": [
+    "orbitdb"
+  ],
+  "license": "AGPL-3.0-or-later",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "./dist/src/index.js",
+  "type": "module",
+  "types": "./dist/src/index.d.ts",
+  "exports": "./dist/src/index.js",
+  "scripts": {
+    "clean": "rimraf dist",
+    "compile": "pnpm updateVersion && pnpm format && pnpm clean && pnpm tspc -p tsconfig.build.json",
+    "test": "pnpm test:node && pnpm test:browser",
+    "test:node": "pnpm compile && pnpm aegir test -t node --cov -- --exit",
+    "test:browser": "pnpm compile && pnpm aegir test -t browser --cov -- --exit",
+    "format": "pnpm prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\" && pnpm eslint --ext .js,.ts src",
+    "release": "pnpm test && (git commit -a -m 'version' || true) && pnpm publish",
+    "updateVersion": "pnpm genversion  --es6 --semi src/version.ts"
+  },
+  "dependencies": {
+    "@orbitdb/core": "^2.0.1",
+    "helia": "^3.0.1"
+  },
+  "devDependencies": {
+    "@chainsafe/libp2p-gossipsub": "^11.1.0",
+    "@chainsafe/libp2p-noise": "^15.0.0",
+    "@chainsafe/libp2p-yamux": "^6.0.1",
+    "@constl/orbit-db-types": "^1.2.9",
+    "@helia/block-brokers": "^1.0.0",
+    "@libp2p/circuit-relay-v2": "^1.0.12",
+    "@libp2p/identify": "^1.0.11",
+    "@libp2p/webrtc": "^4.0.16",
+    "@libp2p/websockets": "^8.0.12",
+    "@types/mocha": "^10.0.6",
+    "@typescript-eslint/eslint-plugin": "^6.19.0",
+    "@typescript-eslint/parser": "^6.19.0",
+    "aegir": "^42.2.2",
+    "blockstore-core": "^4.3.10",
+    "blockstore-level": "^1.1.7",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "genversion": "^3.2.0",
+    "libp2p": "^1.2.0",
+    "mocha": "^10.2.0",
+    "prettier": "^3.2.4",
+    "rimraf": "^5.0.5",
+    "ts-patch": "^3.1.2",
+    "typescript": "^5.3.3",
+    "typescript-transform-paths": "^3.4.6"
+  },
+  "jest": {
+    "transform": {
+      "(.*).ts$": [
+        "ts-jest",
+        {
+          "useESM": true
+        }
+      ]
+    },
+    "preset": "ts-jest/presets/default-esm",
+    "moduleNameMapper": {
+      "^@/(.*).js$": "<rootDir>/src/$1",
+      "^@/(.*)$": "<rootDir>/src/$1"
+    },
+    "testMatch": [
+      "**/*.test.ts"
+    ],
+    "testEnvironment": "node"
+  }
+}
