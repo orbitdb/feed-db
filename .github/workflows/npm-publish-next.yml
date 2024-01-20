@@ -24,6 +24,7 @@ jobs:
       - run: |
           pnpm version prerelease --no-git-tag-version \
             --preid=`git rev-parse --short HEAD`
+          git config --global user.name "Github Action"
           git commit package.json -m "next tag"
           pnpm publish --tag next
         env:
