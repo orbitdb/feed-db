@@ -6,7 +6,7 @@ Feed database type for orbit-db.
 
 ## Installation
 ```
-$ pnpm add @constl/orbit-db-feed
+$ pnpm add @orbitdb/feed-db
 ```
 ## Introduction
 `Feed` database for those feeling nostalgic for orbit-db v.0.x. But honestly, you're probably better off with a [`KeyValue`](https://github.com/orbitdb/core) or a [`Set`](https://github.com/orbitdb/set).
