@@ -85,5 +85,5 @@ export const createTestHelia = async ({
     blockBrokers: [bitswap()],
   };
 
-  return await createHelia({ ...heliaOptions }) as unknown as HeliaLibp2p;
+  return (await createHelia({ ...heliaOptions })) as unknown as HeliaLibp2p;
 };

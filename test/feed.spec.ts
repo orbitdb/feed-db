@@ -37,7 +37,6 @@ describe("Feed Database", () => {
 
     if (!isBrowser) {
       const { rimraf } = await import("rimraf");
-      ;
       await rimraf(keysPath);
       await rimraf("./orbitdb");
       await rimraf("./ipfsOKV");
