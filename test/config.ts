@@ -1,5 +1,5 @@
 // From @orbit-db/core (MIT)
-import { Helia, createHelia } from "helia";
+import { HeliaLibp2p, createHelia } from "helia";
 import { bitswap } from "@helia/block-brokers";
 import { createLibp2p } from "libp2p";
 import { MemoryBlockstore } from "blockstore-core";
@@ -35,7 +35,7 @@ const Libp2pOptions = {
   },
   services: {
     identify: identify(),
-    pubsub: gossipsub({ allowPublishToZeroPeers: true }),
+    pubsub: gossipsub({ allowPublishToZeroTopicPeers: true }),
   },
 };
 
@@ -62,7 +62,7 @@ const Libp2pBrowserOptions = {
   },
   services: {
     identify: identify(),
-    pubsub: gossipsub({ allowPublishToZeroPeers: true }),
+    pubsub: gossipsub({ allowPublishToZeroTopicPeers: true }),
   },
 };
 
@@ -70,10 +70,9 @@ export const createTestHelia = async ({
   directory,
 }: {
   directory?: string;
-} = {}): Promise<Helia> => {
+} = {}): Promise<HeliaLibp2p> => {
   const options = isBrowser() ? Libp2pBrowserOptions : Libp2pOptions;
 
-  // @ts-ignore
   const libp2p = await createLibp2p({ ...options });
 
   const blockstore = directory
@@ -86,5 +85,5 @@ export const createTestHelia = async ({
     blockBrokers: [bitswap()],
   };
 
-  return createHelia({ ...heliaOptions });
+  return await createHelia({ ...heliaOptions }) as unknown as HeliaLibp2p;
 };

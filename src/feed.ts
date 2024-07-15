@@ -4,7 +4,7 @@ import {
   type Identity,
   type Storage,
 } from "@orbitdb/core";
-import type { Helia } from "helia";
+import type { HeliaLibp2p } from "helia";
 
 const type = "feed" as const;
 
@@ -27,7 +27,7 @@ const Feed =
     syncAutomatically,
     onUpdate,
   }: {
-    ipfs: Helia;
+    ipfs: HeliaLibp2p;
     identity?: Identity;
     address: string;
     name?: string;

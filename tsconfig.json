@@ -15,7 +15,7 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "paths": {
-      "@/*": ["src/*"],
+      "@/*": ["src/*"]
     },
     "outDir": "./dist",
     "sourceMap": true,
@@ -30,8 +30,8 @@
 
     "plugins": [
       { "transform": "typescript-transform-paths" },
-      { "transform": "typescript-transform-paths", "afterDeclarations": true },
-    ],
+      { "transform": "typescript-transform-paths", "afterDeclarations": true }
+    ]
   },
-  "include": ["src", "@types", "test"],
+  "include": ["src", "@types", "test"]
 }
