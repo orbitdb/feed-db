@@ -17,16 +17,14 @@ const isBrowser = () => typeof window !== "undefined";
 
 const Libp2pOptions = {
   addresses: {
-    listen: ["/ip4/0.0.0.0/tcp/0/ws"],
+    listen: ["/ip4/0.0.0.0/tcp/0/ws", "/p2p-circuit"],
   },
   transports: [
     webSockets({
       filter: all,
     }),
     webRTC(),
-    circuitRelayTransport({
-      discoverRelays: 1,
-    }),
+    circuitRelayTransport(),
   ],
   connectionEncryption: [noise()],
   streamMuxers: [yamux()],
@@ -44,16 +42,14 @@ const Libp2pOptions = {
  */
 const Libp2pBrowserOptions = {
   addresses: {
-    listen: ["/webrtc"],
+    listen: ["/webrtc", "/p2p-circuit"],
   },
   transports: [
     webSockets({
       filter: all,
     }),
     webRTC(),
-    circuitRelayTransport({
-      discoverRelays: 1,
-    }),
+    circuitRelayTransport(),
   ],
   connectionEncryption: [noise()],
   streamMuxers: [yamux()],
