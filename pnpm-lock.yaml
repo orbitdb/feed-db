@@ -24,9 +24,6 @@ importers:
       '@chainsafe/libp2p-yamux':
         specifier: ^7.0.1
         version: 7.0.1
-      '@constl/orbit-db-types':
-        specifier: ^2.0.2
-        version: 2.0.2
       '@eslint/js':
         specifier: ^9.13.0
         version: 9.13.0
@@ -45,6 +42,9 @@ importers:
       '@libp2p/websockets':
         specifier: ^9.0.9
         version: 9.0.9
+      '@orbitdb/core-types':
+        specifier: ^1.0.10
+        version: 1.0.10
       '@types/mocha':
         specifier: ^10.0.9
         version: 10.0.9
@@ -854,9 +854,6 @@ packages:
     resolution: {integrity: sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==}
     engines: {node: '>=0.1.90'}
 
-  '@constl/orbit-db-types@2.0.2':
-    resolution: {integrity: sha512-YPA08UtYdPMGo9SflWLqWkhPuYo1fNyWkS5K9r9ET0CyaZoJbQRlFGEodFq2dF8e5VjT5/4L7gPmqXGEr1EmWA==}
-
   '@cspotcode/source-map-support@0.8.1':
     resolution: {integrity: sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==}
     engines: {node: '>=12'}
@@ -1499,6 +1496,9 @@ packages:
 
   '@octokit/types@13.6.1':
     resolution: {integrity: sha512-PHZE9Z+kWXb23Ndik8MKPirBPziOc0D2/3KH1P+6jK5nGWe96kadZuE4jev2/Jq7FvIfTlT2Ltg8Fv2x1v0a5g==}
+
+  '@orbitdb/core-types@1.0.10':
+    resolution: {integrity: sha512-wmNvh3jxz5ayE14sCHlcTUvJEBKo6rUVYXAq9J0bAAP9olf18dV/hCG6LETVMZ8X8Qj/wiwKKLYdLxk6c+hWOw==}
 
   '@orbitdb/core@2.3.0':
     resolution: {integrity: sha512-vImvXIlE5PpPDu6eLhe2T6/tsTZK1juL/X/twzPX65L0GGuEjVy3MXk/fd7YF+6/4d6J6+eOLJqafvUiMugnfg==}
@@ -8230,8 +8230,6 @@ snapshots:
 
   '@colors/colors@1.5.0': {}
 
-  '@constl/orbit-db-types@2.0.2': {}
-
   '@cspotcode/source-map-support@0.8.1':
     dependencies:
       '@jridgewell/trace-mapping': 0.3.9
@@ -9207,6 +9205,8 @@ snapshots:
   '@octokit/types@13.6.1':
     dependencies:
       '@octokit/openapi-types': 22.2.0
+
+  '@orbitdb/core-types@1.0.10': {}
 
   '@orbitdb/core@2.3.0':
     dependencies:

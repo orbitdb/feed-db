@@ -1,6 +1,6 @@
 {
   "name": "@orbitdb/feed-db",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Feed database type for orbit-db.",
   "author": "Julien Jean Malard-Adam",
   "keywords": [
@@ -33,13 +33,13 @@
     "@chainsafe/libp2p-gossipsub": "^14.1.0",
     "@chainsafe/libp2p-noise": "^16.0.0",
     "@chainsafe/libp2p-yamux": "^7.0.1",
-    "@constl/orbit-db-types": "^2.0.2",
     "@eslint/js": "^9.13.0",
     "@helia/block-brokers": "^4.0.1",
     "@libp2p/circuit-relay-v2": "^3.0.0",
     "@libp2p/identify": "^3.0.9",
     "@libp2p/webrtc": "^5.0.14",
     "@libp2p/websockets": "^9.0.9",
+    "@orbitdb/core-types": "^1.0.10",
     "@types/mocha": "^10.0.9",
     "@typescript-eslint/eslint-plugin": "^8.11.0",
     "@typescript-eslint/parser": "^8.11.0",
