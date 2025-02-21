@@ -1,6 +1,6 @@
 {
   "name": "@orbitdb/feed-db",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Feed database type for orbit-db.",
   "author": "Julien Jean Malard-Adam",
   "keywords": [
@@ -26,37 +26,37 @@
     "updateVersion": "pnpm genversion  --es6 --semi src/version.ts"
   },
   "dependencies": {
-    "@orbitdb/core": "^2.3.0",
-    "helia": "^5.1.0"
+    "@orbitdb/core": "^2.4.3",
+    "helia": "^5.2.1"
   },
   "devDependencies": {
     "@chainsafe/libp2p-gossipsub": "^14.1.0",
-    "@chainsafe/libp2p-noise": "^16.0.0",
+    "@chainsafe/libp2p-noise": "^16.0.3",
     "@chainsafe/libp2p-yamux": "^7.0.1",
-    "@eslint/js": "^9.13.0",
-    "@helia/block-brokers": "^4.0.1",
-    "@libp2p/circuit-relay-v2": "^3.0.0",
-    "@libp2p/identify": "^3.0.9",
-    "@libp2p/webrtc": "^5.0.14",
-    "@libp2p/websockets": "^9.0.9",
-    "@orbitdb/core-types": "^1.0.10",
-    "@types/mocha": "^10.0.9",
-    "@typescript-eslint/eslint-plugin": "^8.11.0",
-    "@typescript-eslint/parser": "^8.11.0",
-    "aegir": "^44.1.4",
+    "@eslint/js": "^9.20.0",
+    "@helia/block-brokers": "^4.0.4",
+    "@libp2p/circuit-relay-v2": "^3.2.0",
+    "@libp2p/identify": "^3.0.20",
+    "@libp2p/webrtc": "^5.2.0",
+    "@libp2p/websockets": "^9.2.0",
+    "@orbitdb/core-types": "^1.0.14",
+    "@types/mocha": "^10.0.10",
+    "@typescript-eslint/eslint-plugin": "^8.24.1",
+    "@typescript-eslint/parser": "^8.24.1",
+    "aegir": "^45.0.9",
     "blockstore-core": "^5.0.2",
     "blockstore-level": "^2.0.1",
-    "eslint": "^9.13.0",
-    "eslint-config-prettier": "^9.1.0",
+    "eslint": "^9.20.1",
+    "eslint-config-prettier": "^10.0.1",
     "genversion": "^3.2.0",
-    "libp2p": "^2.1.10",
-    "mocha": "^10.7.3",
-    "prettier": "^3.3.3",
+    "libp2p": "^2.7.0",
+    "mocha": "^11.1.0",
+    "prettier": "^3.5.1",
     "rimraf": "^6.0.1",
-    "ts-patch": "^3.2.1",
-    "typescript": "5.5.4",
-    "typescript-eslint": "^8.11.0",
-    "typescript-transform-paths": "^3.5.1",
+    "ts-patch": "^3.3.0",
+    "typescript": "5.7.3",
+    "typescript-eslint": "^8.24.1",
+    "typescript-transform-paths": "^3.5.3",
     "wherearewe": "^2.0.1"
   },
   "jest": {
@@ -77,5 +77,12 @@
       "**/*.test.ts"
     ],
     "testEnvironment": "node"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@ipshipyard/node-datachannel",
+      "classic-level",
+      "esbuild"
+    ]
   }
 }
