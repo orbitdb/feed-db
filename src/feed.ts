@@ -43,7 +43,7 @@ const Feed =
     indexStorage?: Storage;
     referencesCount?: number;
     syncAutomatically?: boolean;
-    onUpdate?: () => void;
+    onUpdate?: (log: Log, entry: LogEntry) => void;
   }) => {
     const database = await Database({
       ipfs,
