@@ -7,6 +7,8 @@ import {
   type MetaData,
 } from "@orbitdb/core";
 import type { HeliaLibp2p } from "helia";
+import type { Libp2p } from "libp2p";
+import type { ServiceMap } from "@libp2p/interface";
 
 const type = "feed" as const;
 
@@ -14,7 +16,7 @@ export type FeedDatabaseType = Awaited<ReturnType<ReturnType<typeof Feed>>>;
 
 const Feed =
   () =>
-  async ({
+  async <T extends ServiceMap = ServiceMap>({
     ipfs,
     identity,
     address,
@@ -29,7 +31,7 @@ const Feed =
     syncAutomatically,
     onUpdate,
   }: {
-    ipfs: HeliaLibp2p;
+    ipfs: HeliaLibp2p<Libp2p<T>>;
     identity?: Identity;
     address: string;
     name?: string;
