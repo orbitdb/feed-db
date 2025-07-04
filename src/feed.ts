@@ -64,10 +64,7 @@ const Feed =
       onUpdate,
     });
 
-    const {
-      add, remove, iterator, all
-    } = await FeedApi({ database });
-    
+    const { add, remove, iterator, all } = await FeedApi({ database });
 
     return {
       ...database,
@@ -135,9 +132,11 @@ export const FeedApi = async ({ database }: { database: BaseDatabase }) => {
     return values;
   };
   return {
-    add, remove, iterator, all
-  }
-}
-  
+    add,
+    remove,
+    iterator,
+    all,
+  };
+};
 
 export default Feed;
