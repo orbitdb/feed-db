@@ -7,6 +7,7 @@ import {
   type MetaData,
   type Log,
   type LogEntry,
+  BaseDatabase,
 } from "@orbitdb/core";
 import type { HeliaLibp2p } from "helia";
 import type { Libp2p } from "libp2p";
@@ -63,58 +64,10 @@ const Feed =
       onUpdate,
     });
 
-    const { addOperation, log } = database;
-
-    const add = async (value: DagCborEncodable): Promise<string> => {
-      return addOperation({ op: "ADD", key: null, value });
-    };
-
-    const remove = async (hash: string): Promise<string> => {
-      return addOperation({ op: "DEL", key: null, value: hash });
-    };
-
-    const iterator = async function* ({
-      amount,
-    }: { amount?: number } = {}): AsyncGenerator<
-      {
-        value: unknown;
-        hash: string;
-      },
-      void,
-      unknown
-    > {
-      const vals: { [val: string]: boolean } = {};
-      let count = 0;
-      for await (const entry of log.traverse()) {
-        const { op, value } = entry.payload;
-        const { hash } = entry;
-
-        if (op === "ADD" && !vals[hash]) {
-          count++;
-          const hash = entry.hash;
-          vals[hash] = true;
-          yield { value, hash };
-        } else if (op === "DEL" && !vals[value as string]) {
-          vals[value as string] = true;
-        }
-        if (amount !== undefined && count >= amount) {
-          break;
-        }
-      }
-    };
-
-    const all = async (): Promise<
-      {
-        value: unknown;
-        hash: string;
-      }[]
-    > => {
-      const values = [];
-      for await (const entry of iterator()) {
-        values.unshift(entry);
-      }
-      return values;
-    };
+    const {
+      add, remove, iterator, all
+    } = await FeedApi({ database });
+    
 
     return {
       ...database,
@@ -127,5 +80,64 @@ const Feed =
   };
 
 Feed.type = type;
+
+export const FeedApi = async ({ database }: { database: BaseDatabase }) => {
+  const { addOperation, log } = database;
+
+  const add = async (value: DagCborEncodable): Promise<string> => {
+    return addOperation({ op: "ADD", key: null, value });
+  };
+
+  const remove = async (hash: string): Promise<string> => {
+    return addOperation({ op: "DEL", key: null, value: hash });
+  };
+
+  const iterator = async function* ({
+    amount,
+  }: { amount?: number } = {}): AsyncGenerator<
+    {
+      value: unknown;
+      hash: string;
+    },
+    void,
+    unknown
+  > {
+    const vals: { [val: string]: boolean } = {};
+    let count = 0;
+    for await (const entry of log.traverse()) {
+      const { op, value } = entry.payload;
+      const { hash } = entry;
+
+      if (op === "ADD" && !vals[hash]) {
+        count++;
+        const hash = entry.hash;
+        vals[hash] = true;
+        yield { value, hash };
+      } else if (op === "DEL" && !vals[value as string]) {
+        vals[value as string] = true;
+      }
+      if (amount !== undefined && count >= amount) {
+        break;
+      }
+    }
+  };
+
+  const all = async (): Promise<
+    {
+      value: unknown;
+      hash: string;
+    }[]
+  > => {
+    const values = [];
+    for await (const entry of iterator()) {
+      values.unshift(entry);
+    }
+    return values;
+  };
+  return {
+    add, remove, iterator, all
+  }
+}
+  
 
 export default Feed;
