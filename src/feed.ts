@@ -1,13 +1,13 @@
-import {
-  Database,
-  type AccessController,
-  type Identity,
-  type Storage,
-  type DagCborEncodable,
-  type MetaData,
-  type Log,
-  type LogEntry,
-  BaseDatabase,
+import { Database } from "@orbitdb/core";
+import type {
+  AccessController,
+  Identity,
+  Storage,
+  DagCborEncodable,
+  MetaData,
+  Log,
+  LogEntry,
+  InternalDatabase,
 } from "@orbitdb/core";
 import type { HeliaLibp2p } from "helia";
 import type { Libp2p } from "libp2p";
@@ -78,7 +78,7 @@ const Feed =
 
 Feed.type = type;
 
-export const FeedApi = ({ database }: { database: BaseDatabase }) => {
+export const FeedApi = ({ database }: { database: InternalDatabase }) => {
   const { addOperation, log } = database;
 
   const add = async (value: DagCborEncodable): Promise<string> => {
