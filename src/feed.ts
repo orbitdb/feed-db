@@ -79,7 +79,6 @@ const Feed =
 Feed.type = type;
 
 export const FeedApi = ({ database }: { database: InternalDatabase }) => {
-
   const add = async (value: DagCborEncodable): Promise<string> => {
     return database.addOperation({ op: "ADD", key: null, value });
   };

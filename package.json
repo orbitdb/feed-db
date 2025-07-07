@@ -1,6 +1,6 @@
 {
   "name": "@orbitdb/feed-db",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Feed database type for orbit-db.",
   "author": "Julien Jean Malard-Adam",
   "keywords": [
