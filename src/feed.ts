@@ -79,14 +79,13 @@ const Feed =
 Feed.type = type;
 
 export const FeedApi = ({ database }: { database: InternalDatabase }) => {
-  const { addOperation, log } = database;
 
   const add = async (value: DagCborEncodable): Promise<string> => {
-    return addOperation({ op: "ADD", key: null, value });
+    return database.addOperation({ op: "ADD", key: null, value });
   };
 
   const remove = async (hash: string): Promise<string> => {
-    return addOperation({ op: "DEL", key: null, value: hash });
+    return database.addOperation({ op: "DEL", key: null, value: hash });
   };
 
   const iterator = async function* ({
@@ -101,7 +100,7 @@ export const FeedApi = ({ database }: { database: InternalDatabase }) => {
   > {
     const vals: { [val: string]: boolean } = {};
     let count = 0;
-    for await (const entry of log.traverse()) {
+    for await (const entry of database.log.traverse()) {
       const { op, value } = entry.payload;
       const { hash } = entry;
 
