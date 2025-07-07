@@ -64,7 +64,7 @@ const Feed =
       onUpdate,
     });
 
-    const { add, remove, iterator, all } = await FeedApi({ database });
+    const { add, remove, iterator, all } = FeedApi({ database });
 
     return {
       ...database,
@@ -78,7 +78,7 @@ const Feed =
 
 Feed.type = type;
 
-export const FeedApi = async ({ database }: { database: BaseDatabase }) => {
+export const FeedApi = ({ database }: { database: BaseDatabase }) => {
   const { addOperation, log } = database;
 
   const add = async (value: DagCborEncodable): Promise<string> => {
