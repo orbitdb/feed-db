@@ -136,5 +136,6 @@ export const FeedApi = ({ database }: { database: InternalDatabase }) => {
     all,
   };
 };
+FeedApi.type = type;
 
 export default Feed;
