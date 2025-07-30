@@ -9,7 +9,7 @@ import type {
   LogEntry,
   InternalDatabase,
 } from "@orbitdb/core";
-import type { HeliaLibp2p } from "helia";
+import type { Helia } from "helia";
 import type { Libp2p } from "libp2p";
 import type { ServiceMap } from "@libp2p/interface";
 
@@ -34,7 +34,7 @@ const Feed =
     syncAutomatically,
     onUpdate,
   }: {
-    ipfs: HeliaLibp2p<Libp2p<T>>;
+    ipfs: Helia<Libp2p<T>>;
     identity?: Identity;
     address: string;
     name?: string;
