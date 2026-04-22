@@ -33,6 +33,7 @@ const Feed =
     referencesCount,
     syncAutomatically,
     onUpdate,
+    signal,
   }: {
     ipfs: Helia<Libp2p<T>>;
     identity?: Identity;
@@ -47,6 +48,7 @@ const Feed =
     referencesCount?: number;
     syncAutomatically?: boolean;
     onUpdate?: (log: Log, entry: LogEntry) => void;
+    signal?: AbortSignal;
   }) => {
     const database = await Database({
       ipfs,
@@ -62,6 +64,7 @@ const Feed =
       referencesCount,
       syncAutomatically,
       onUpdate,
+      signal,
     });
 
     const { add, remove, iterator, all } = FeedApi({ database });
