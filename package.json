@@ -1,6 +1,6 @@
 {
   "name": "@orbitdb/feed-db",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Feed database type for orbit-db.",
   "author": "Julien Jean Malard-Adam",
   "keywords": [
@@ -15,9 +15,8 @@
   "types": "./dist/index.d.ts",
   "exports": "./dist/index.js",
   "scripts": {
-    "clean": "rimraf dist",
-    "compile": "pnpm clean && pnpm tspc -p tsconfig.json",
-    "compile:prod": "pnpm updateVersion && pnpm format && pnpm clean && pnpm tspc -p tsconfig.build.json",
+    "compile": "pnpm tspc -p tsconfig.json",
+    "compile:prod": "pnpm updateVersion && pnpm format && pnpm tspc -p tsconfig.build.json",
     "test": "pnpm test:node && pnpm test:browser",
     "test:node": "pnpm compile && pnpm aegir test -t node --cov -- --exit",
     "test:browser": "pnpm compile && pnpm aegir test -t browser --cov -- --exit",
@@ -30,17 +29,17 @@
     "helia": "^6.1.4"
   },
   "devDependencies": {
-    "@libp2p/gossipsub": "^15.0.19",
     "@chainsafe/libp2p-noise": "^17.0.0",
     "@chainsafe/libp2p-yamux": "^8.0.1",
     "@eslint/js": "^10.0.1",
     "@helia/block-brokers": "^5.2.4",
     "@libp2p/circuit-relay-v2": "^4.2.2",
+    "@libp2p/gossipsub": "^15.0.19",
     "@libp2p/identify": "^4.1.2",
     "@libp2p/interface": "^3.2.2",
     "@libp2p/webrtc": "^6.0.19",
     "@libp2p/websockets": "^10.1.10",
-    "@orbitdb/core-types": "^1.2.3",
+    "@orbitdb/core-types": "^1.2.4",
     "@types/mocha": "^10.0.10",
     "@typescript-eslint/eslint-plugin": "^8.59.0",
     "@typescript-eslint/parser": "^8.59.0",
