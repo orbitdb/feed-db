@@ -1,4 +1,4 @@
-import type { HeliaLibp2p } from "helia";
+import type { Helia } from "helia";
 
 import { Identities, Identity, KeyStore, KeyStoreType } from "@orbitdb/core";
 import Feed, { FeedDatabaseType } from "@/feed.js";
@@ -10,7 +10,7 @@ import { expect } from "aegir/chai";
 const keysPath = "./testkeys";
 
 describe("Feed Database", () => {
-  let ipfs: HeliaLibp2p;
+  let ipfs: Helia;
   let identities;
   let keystore: KeyStoreType;
   let testIdentity1: Identity;
@@ -39,7 +39,6 @@ describe("Feed Database", () => {
       const { rimraf } = await import("rimraf");
       await rimraf(keysPath);
       await rimraf("./orbitdb");
-      await rimraf("./ipfsOKV");
     }
   });
 

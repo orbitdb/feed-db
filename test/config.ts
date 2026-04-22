@@ -1,5 +1,6 @@
 // From @orbit-db/core (MIT)
-import { HeliaLibp2p, createHelia } from "helia";
+import type { Helia } from "helia";
+import { createHelia } from "helia";
 import { bitswap } from "@helia/block-brokers";
 import { createLibp2p } from "libp2p";
 import { MemoryBlockstore } from "blockstore-core";
@@ -7,10 +8,9 @@ import { LevelBlockstore } from "blockstore-level";
 import { identify } from "@libp2p/identify";
 import { webSockets } from "@libp2p/websockets";
 import { webRTC } from "@libp2p/webrtc";
-import { all } from "@libp2p/websockets/filters";
 import { noise } from "@chainsafe/libp2p-noise";
 import { yamux } from "@chainsafe/libp2p-yamux";
-import { gossipsub } from "@chainsafe/libp2p-gossipsub";
+import { gossipsub } from "@libp2p/gossipsub";
 import { circuitRelayTransport } from "@libp2p/circuit-relay-v2";
 
 const isBrowser = () => typeof window !== "undefined";
@@ -19,13 +19,7 @@ const Libp2pOptions = {
   addresses: {
     listen: ["/ip4/0.0.0.0/tcp/0/ws", "/p2p-circuit"],
   },
-  transports: [
-    webSockets({
-      filter: all,
-    }),
-    webRTC(),
-    circuitRelayTransport(),
-  ],
+  transports: [webSockets(), webRTC(), circuitRelayTransport()],
   connectionEncryption: [noise()],
   streamMuxers: [yamux()],
   connectionGater: {
@@ -44,13 +38,7 @@ const Libp2pBrowserOptions = {
   addresses: {
     listen: ["/webrtc", "/p2p-circuit"],
   },
-  transports: [
-    webSockets({
-      filter: all,
-    }),
-    webRTC(),
-    circuitRelayTransport(),
-  ],
+  transports: [webSockets(), webRTC(), circuitRelayTransport()],
   connectionEncryption: [noise()],
   streamMuxers: [yamux()],
   connectionGater: {
@@ -66,7 +54,7 @@ export const createTestHelia = async ({
   directory,
 }: {
   directory?: string;
-} = {}): Promise<HeliaLibp2p> => {
+} = {}): Promise<Helia> => {
   const options = isBrowser() ? Libp2pBrowserOptions : Libp2pOptions;
 
   const libp2p = await createLibp2p({ ...options });
@@ -81,5 +69,5 @@ export const createTestHelia = async ({
     blockBrokers: [bitswap()],
   };
 
-  return (await createHelia({ ...heliaOptions })) as unknown as HeliaLibp2p;
+  return (await createHelia({ ...heliaOptions })) as unknown as Helia;
 };
