@@ -13,11 +13,12 @@ $ pnpm add @orbitdb/feed-db
 
 ## Examples
 ```ts
-import { createOrbit } from "@orbitdb/core";
-import { registerFeed } from "@orbitdb/feed-db";
+import { createOrbitDB, useDatabaseType } from "@orbitdb/core";
+import { Feed } from "@orbitdb/feed-db";
 
 // Register database type. IMPORTANT - must call before creating orbit instance !
-registerFeed();
+useDatabaseType(Feed);
+const orbit = await createOrbitDB()
 const db = await orbit.open({ type: "feed" });
 
 await db.add({ a: 1, b: "c" });
